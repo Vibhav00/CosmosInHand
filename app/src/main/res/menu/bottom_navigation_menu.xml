@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:id="@+id/apod_fragment"
+        android:title="apod"
+        android:icon="@drawable/ic_baseline_public_24"
+        />
+    <item android:id="@+id/iavl_fragmet"
+        android:title="iavl"
+        android:icon="@drawable/ic_baseline_search_24"
+        />
+    <item android:id="@+id/savedFragment"
+        android:title="saved"
+        android:icon="@drawable/ic_baseline_save_24"
+        />
+</menu>

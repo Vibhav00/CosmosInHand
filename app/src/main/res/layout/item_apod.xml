@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:padding="10dp">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30dp"
+        android:id="@+id/date_apod"
+
+        tools:text="2022-56-34"
+        />
+    <ImageView
+        android:id="@+id/iv_apod"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        tools:src="@drawable/ashish"
+        />
+    <TextView
+        android:id="@+id/desc_apod"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="dkfjsljdfljlsdfssdjkfl"
+        />
+
+</LinearLayout>
