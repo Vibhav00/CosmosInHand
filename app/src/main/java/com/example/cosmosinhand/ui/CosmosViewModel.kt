@@ -18,6 +18,8 @@ import com.example.cosmosinhand.util.Resource
 import kotlinx.coroutines.launch
 import retrofit2.Response
 import java.io.IOException
+import java.text.SimpleDateFormat
+import java.util.*
 
 class CosmosViewModel(app: Application, val cosmosRepository: CosmosRepository) :
     AndroidViewModel(app) {
@@ -27,8 +29,9 @@ class CosmosViewModel(app: Application, val cosmosRepository: CosmosRepository) 
     val imagelist: MutableLiveData<Resource<List<String>>> = MutableLiveData()
 
     init {
-        getApodList("2022-01-01", "2022-01-05")
+
         getIavlList("sun")
+        getApodListini()
     }
 
     fun getApodList(startdate: String, endDate: String) = viewModelScope.launch {
@@ -172,6 +175,16 @@ class CosmosViewModel(app: Application, val cosmosRepository: CosmosRepository) 
             }
         }
         return false
+    }
+    private  fun getApodListini()
+    {
+        var simpleDateFormate =  SimpleDateFormat("yyyy-MM-dd")
+        var sd=simpleDateFormate.format(System.currentTimeMillis())
+        //Log.e("today",)
+        val myCal= Calendar.getInstance()
+        myCal.add(Calendar.DAY_OF_YEAR,-5)
+        var ed=simpleDateFormate.format(myCal.time)
+        getApodList(ed, sd)
     }
 
 }

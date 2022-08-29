@@ -3,16 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/91911/AndroidStudioProjects/CosmosInHand/app/src/main/res/layout/activity_cosmos.xml" value="0.1" />
+        <entry key="..\:/Users/91911/AndroidStudioProjects/CosmosInHand/app/src/main/res/drawable/ic_baseline_edit_calendar_24.xml" value="0.19583333333333333" />
+        <entry key="..\:/Users/91911/AndroidStudioProjects/CosmosInHand/app/src/main/res/layout/activity_cosmos.xml" value="0.22" />
         <entry key="..\:/Users/91911/AndroidStudioProjects/CosmosInHand/app/src/main/res/layout/first_fragment.xml" value="0.1796875" />
         <entry key="..\:/Users/91911/AndroidStudioProjects/CosmosInHand/app/src/main/res/layout/fragment_apod.xml" value="0.1796875" />
-        <entry key="..\:/Users/91911/AndroidStudioProjects/CosmosInHand/app/src/main/res/layout/fragment_desc.xml" value="0.4466666666666667" />
+        <entry key="..\:/Users/91911/AndroidStudioProjects/CosmosInHand/app/src/main/res/layout/fragment_desc.xml" value="0.3605600933488915" />
         <entry key="..\:/Users/91911/AndroidStudioProjects/CosmosInHand/app/src/main/res/layout/fragment_i_a_v_l.xml" value="0.22" />
         <entry key="..\:/Users/91911/AndroidStudioProjects/CosmosInHand/app/src/main/res/layout/fragment_saved.xml" value="0.1796875" />
         <entry key="..\:/Users/91911/AndroidStudioProjects/CosmosInHand/app/src/main/res/layout/fragment_saved_celestials.xml" value="0.1796875" />
         <entry key="..\:/Users/91911/AndroidStudioProjects/CosmosInHand/app/src/main/res/layout/item_apod.xml" value="0.1796875" />
-        <entry key="..\:/Users/91911/AndroidStudioProjects/CosmosInHand/app/src/main/res/layout/item_i_a_v_l.xml" value="0.1796875" />
-        <entry key="..\:/Users/91911/AndroidStudioProjects/CosmosInHand/app/src/main/res/layout/nav_header.xml" value="0.1796875" />
+        <entry key="..\:/Users/91911/AndroidStudioProjects/CosmosInHand/app/src/main/res/layout/item_i_a_v_l.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/91911/AndroidStudioProjects/CosmosInHand/app/src/main/res/layout/nav_header.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/91911/AndroidStudioProjects/CosmosInHand/app/src/main/res/layout/second_fragment.xml" value="0.1796875" />
         <entry key="..\:/Users/91911/AndroidStudioProjects/CosmosInHand/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.1" />
         <entry key="..\:/Users/91911/AndroidStudioProjects/CosmosInHand/app/src/main/res/menu/mymenu.xml" value="0.1" />

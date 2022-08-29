@@ -31,10 +31,6 @@ class IAVLFragment : Fragment(R.layout.fragment_i_a_v_l) {
 
         viewModel = (activity as CosmosActivity).viewmodel
         var name: String = "sun"
-        btn_iavl.setOnClickListener {
-            name = et_iavl.text.toString()
-            viewModel.getIavlList(name)
-        }
 
         setUpRecyclerView()
 

@@ -38,7 +38,7 @@ class ApodAdapter : RecyclerView.Adapter<ApodAdapter.ApodViewHolder>() {
     override fun onBindViewHolder(holder: ApodViewHolder, position: Int) {
         val apod = differ.currentList[position]
         holder.itemView.apply {
-            Glide.with(this).load(apod.hdurl).into(iv_apod)
+            Glide.with(this).load(apod.url).into(iv_apod)
             date_apod.text = apod.date
             desc_apod.text = apod.explanation
             setOnClickListener {

@@ -3,27 +3,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/third"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragment.IAVLFragment">
 
     <EditText
         android:id="@+id/et_iavl"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_iavl"
-        app:layout_constraintEnd_toStartOf="@+id/btn_iavl"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_iavl"
-        app:layout_constraintTop_toTopOf="parent" />
-    <Button
-        android:visibility="gone"
-        android:layout_width="50dp"
         android:layout_height="50dp"
-        android:id="@+id/btn_iavl"
-        app:layout_constraintTop_toTopOf="parent"
+   app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
 
-        />
+
+       />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_iavl"
         android:layout_width="match_parent"
