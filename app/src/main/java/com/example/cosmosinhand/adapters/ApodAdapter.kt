@@ -12,6 +12,11 @@ import com.example.cosmosinhand.models.apod.Apod
 import com.example.cosmosinhand.models.apod.ApodItem
 import kotlinx.android.synthetic.main.item_apod.view.*
 
+
+/**
+ * this is here to handle the recyclerview of Apod items
+ * using AsyncListDiffer for this
+ */
 class ApodAdapter : RecyclerView.Adapter<ApodAdapter.ApodViewHolder>() {
 
     class ApodViewHolder(itemview: View) : RecyclerView.ViewHolder(itemview)

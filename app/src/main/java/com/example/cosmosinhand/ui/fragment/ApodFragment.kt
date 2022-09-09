@@ -37,10 +37,11 @@ class ApodFragment : Fragment(R.layout.fragment_apod) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        Log.e("vibhav", "yaha tk")
+        //   initialising viewModel
         viewModel = (activity as CosmosActivity).viewmodel
 
-
+        //   checking if there is internet connection or not
+        //   if not goto  saved fragment which do not require internet connection
         if (!viewModel.hasInternateConnection()) {
             Toast.makeText(
                 (activity as CosmosActivity).applicationContext,
@@ -50,7 +51,10 @@ class ApodFragment : Fragment(R.layout.fragment_apod) {
             findNavController().navigate(R.id.action_apod_fragment_to_savedFragment)
         }
 
+        //settion up recyclere view
         setUpRecyclerView()
+
+        // navigating to the description fragment after clicking on the items of  the recycler view
         apodAdapter.setOnItemClickListner {
 
             val bundle = Bundle().apply {
@@ -60,12 +64,7 @@ class ApodFragment : Fragment(R.layout.fragment_apod) {
             findNavController().navigate(R.id.action_apod_fragment_to_descFragment, bundle)
         }
 
-
-
-        Log.e("today", simpleDateFormate.format(System.currentTimeMillis()))
-
-
-
+        // observing json response(APOD) and updating differ (DIFFER)
         viewModel.apodList.observe(viewLifecycleOwner, Observer { response ->
             when (response) {
                 is Resource.Success -> {
@@ -96,26 +95,25 @@ class ApodFragment : Fragment(R.layout.fragment_apod) {
 
     }
 
+    //function to hind progress bar
     private fun hideProgressBar() {
         pbar_apod.visibility = View.INVISIBLE
     }
 
+    // function to show progress bar
     private fun showProgressBar() {
         pbar_apod.visibility = View.VISIBLE
     }
 
+    // function to set recycler view
     private fun setUpRecyclerView() {
         apodAdapter = ApodAdapter()
         rvapod.apply {
             adapter = apodAdapter
-            layoutManager = LinearLayoutManager(activity,LinearLayoutManager.VERTICAL,true  )
+            layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, true)
 
         }
     }
-
-
-
-
 
 
 }

@@ -29,11 +29,16 @@ class IAVLFragment : Fragment(R.layout.fragment_i_a_v_l) {
         super.onViewCreated(view, savedInstanceState)
 
 
+        // initialising view model
         viewModel = (activity as CosmosActivity).viewmodel
         var name: String = "sun"
 
+        // setting up recycler view
         setUpRecyclerView()
 
+
+        // setting a functionality to search after each 1/2 second when the text in the
+        // Edit text is changed
         var job: Job? = null
         et_iavl.addTextChangedListener { editable ->
             job?.cancel()
@@ -48,8 +53,7 @@ class IAVLFragment : Fragment(R.layout.fragment_i_a_v_l) {
         }
 
 
-
-
+        // navigating to the database fragment if there is no internet connection
         if (!viewModel.hasInternateConnection()) {
             Toast.makeText(
                 (activity as CosmosActivity).applicationContext,
@@ -60,20 +64,18 @@ class IAVLFragment : Fragment(R.layout.fragment_i_a_v_l) {
         }
 
 
+        // setting item click listener to the items in the iavl adapter
         iavlAdapter.setOnItemClickListner {
 
             val bundle = Bundle().apply {
                 putSerializable("urlpre", it.href)
-//                putSerializable("description",)
                 putSerializable("description", it.data[0].description_508)
             }
             findNavController().navigate(R.id.action_iavl_fragmet_to_descFragment, bundle)
         }
 
-        viewModel.iavlList.observe(viewLifecycleOwner, Observer {
-
-                response ->
-
+        // observing the response IAVL and posting it to differiavl
+        viewModel.iavlList.observe(viewLifecycleOwner, Observer { response ->
             when (response) {
                 is Resource.Success -> {
                     hideProgressBar()
@@ -81,8 +83,6 @@ class IAVLFragment : Fragment(R.layout.fragment_i_a_v_l) {
                         iavlAdapter.diffiiavl.submitList(res.collection.items)
 
                     }
-
-
                 }
                 is Resource.Error -> {
                     hideProgressBar()
@@ -102,15 +102,18 @@ class IAVLFragment : Fragment(R.layout.fragment_i_a_v_l) {
 
     }
 
+    // function to hide progress bar
     private fun hideProgressBar() {
         pb_iavl.visibility = View.INVISIBLE
 
     }
 
+    // function to show progress bar
     private fun showProgressBar() {
         pb_iavl.visibility = View.VISIBLE
     }
 
+    // funtion to setuprecylerview
     private fun setUpRecyclerView() {
         iavlAdapter = IavlAdapter()
         rv_iavl.apply {

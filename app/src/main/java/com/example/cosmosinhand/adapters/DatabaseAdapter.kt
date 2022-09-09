@@ -14,6 +14,10 @@ import com.example.cosmosinhand.models.database.DatabaseItem
 import kotlinx.android.synthetic.main.item_apod.view.*
 import kotlinx.android.synthetic.main.item_i_a_v_l.view.*
 
+
+/**
+ * it is here to handle Database items
+ */
 class DatabaseAdapter : RecyclerView.Adapter<DatabaseAdapter.DataItemViewHolder>() {
     class DataItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
@@ -41,6 +45,7 @@ class DatabaseAdapter : RecyclerView.Adapter<DatabaseAdapter.DataItemViewHolder>
         holder.itemView.apply {
             Glide.with(this).load(dataItem.ure).into(image_view_iavl)
             desc_iavl.text = dataItem.des
+            title_iavl.visibility=View.INVISIBLE
             setOnClickListener {
                 onItemDataClickListner?.let {
 

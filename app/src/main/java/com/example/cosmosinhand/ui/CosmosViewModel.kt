@@ -14,7 +14,7 @@ import com.example.cosmosinhand.models.apod.ApodItem
 import com.example.cosmosinhand.models.database.DatabaseItem
 import com.example.cosmosinhand.models.iavl.Iavl
 import com.example.cosmosinhand.repository.CosmosRepository
-import com.example.cosmosinhand.util.Resource
+import com.example.cosmosinhand.util  .Resource
 import kotlinx.coroutines.launch
 import retrofit2.Response
 import java.io.IOException
@@ -28,37 +28,37 @@ class CosmosViewModel(app: Application, val cosmosRepository: CosmosRepository) 
     val apodList: MutableLiveData<Resource<List<ApodItem>>> = MutableLiveData()
     val imagelist: MutableLiveData<Resource<List<String>>> = MutableLiveData()
 
+    // initial request
     init {
 
         getIavlList("sun")
         getApodListini()
     }
 
+    // funtion to call for Apod list
     fun getApodList(startdate: String, endDate: String) = viewModelScope.launch {
-        safeGetApodList(startdate,endDate)
+        safeGetApodList(startdate, endDate)
 
     }
 
+    // function to handle Apod Response
     private fun handleApodResponse(response: Response<List<ApodItem>>): Resource<List<ApodItem>> {
         if (response.isSuccessful) {
             response.body()?.let { it ->
-
-
                 return Resource.Success(it)
             }
         }
         return Resource.Error(response.message())
     }
 
+    // function to get Iavl list
     fun getIavlList(searchname: String) = viewModelScope.launch {
-       safeGetIavlList(searchname)
-       // Log.e("vibhav", handleIavlResponse(responseiavl).data.toString())
-
+        safeGetIavlList(searchname)
     }
 
+    // function to handle response of Iavl request
     private fun handleIavlResponse(response: Response<Iavl>): Resource<Iavl> {
         if (response.isSuccessful) {
-
             response.body()?.let { it ->
                 return Resource.Success(it)
             }
@@ -66,12 +66,14 @@ class CosmosViewModel(app: Application, val cosmosRepository: CosmosRepository) 
         return Resource.Error(response.message())
     }
 
+    // function to get the list of Images
     fun getImageList(url: String) = viewModelScope.launch {
         imagelist.postValue(Resource.Loding())
         val responseimage = cosmosRepository.getImageList(url)
         imagelist.postValue(handleImageListResponse(responseimage))
     }
 
+    // function to handle the Image list response
     private fun handleImageListResponse(response: Response<List<String>>): Resource<List<String>> {
         if (response.isSuccessful) {
             response.body()?.let { it ->
@@ -81,71 +83,67 @@ class CosmosViewModel(app: Application, val cosmosRepository: CosmosRepository) 
         return Resource.Error(response.message())
     }
 
+    // function to save Database items into database
     fun saveIntoDatabase(databaseItem: DatabaseItem) = viewModelScope.launch {
         cosmosRepository.upsert(databaseItem)
     }
 
+
+    // function to get all saved items
     fun getAllSavedItems() =
         cosmosRepository.getSavedItems()
 
+    //function to delete one saved item
     fun deleteSavedItem(databaseItem: DatabaseItem) = viewModelScope.launch {
         cosmosRepository.deleteDatabaseItem(databaseItem)
     }
 
 
+    // function to get the IAVL list response safely . i.e check if internet is available or not
     private suspend fun safeGetIavlList(searchname: String) {
-
         iavlList.postValue(Resource.Loding())
         try {
             if (hasInternateConnection()) {
                 val response = cosmosRepository.getIavl(searchname)
-                    iavlList.postValue(handleIavlResponse(response))
-            }
-            else
-            {
-               iavlList.postValue(Resource.Error("network error"))
+                iavlList.postValue(handleIavlResponse(response))
+            } else {
+                iavlList.postValue(Resource.Error("network error"))
             }
 
-        }catch (t:Throwable)
-        {
-            when(t)
-            {
-                is IOException->iavlList.postValue(Resource.Error("ioexception") )
-                else->iavlList.postValue(Resource.Error("conversion error") )
+        } catch (t: Throwable) {
+            when (t) {
+                is IOException -> iavlList.postValue(Resource.Error("ioexception"))
+                else -> iavlList.postValue(Resource.Error("conversion error"))
             }
 
         }
     }
+
+    // function to get the apod list response safely . i.e check if internet is available or not
     private suspend fun safeGetApodList(startdate: String, endDate: String) {
 
         apodList.postValue(Resource.Loding())
         try {
-
-           // Log.e("vibhav_view",hasInternateConnection().toString())
-
             if (hasInternateConnection()) {
                 val response = cosmosRepository.getApod(startdate, endDate)
 
                 apodList.postValue(handleApodResponse(response))
-            }
-            else
-            {
-                    apodList.postValue(Resource.Error("network error"))
+            } else {
+                apodList.postValue(Resource.Error("network error"))
             }
 
-        }catch (t:Throwable)
-        {
-            when(t)
-            {
-                      is IOException->apodList.postValue(Resource.Error("ioexception") )
-                        else->apodList.postValue(Resource.Error("conversion error") )
+        } catch (t: Throwable) {
+            when (t) {
+                is IOException -> apodList.postValue(Resource.Error("ioexception"))
+                else -> apodList.postValue(Resource.Error("conversion error"))
             }
 
         }
     }
 
 
-     fun hasInternateConnection(): Boolean {
+    // function to check internet connection
+    fun hasInternateConnection(): Boolean {
 
         val connectivityManager = getApplication<CosmosApplication>().getSystemService(
             Context.CONNECTIVITY_SERVICE
@@ -176,14 +174,14 @@ class CosmosViewModel(app: Application, val cosmosRepository: CosmosRepository) 
         }
         return false
     }
-    private  fun getApodListini()
-    {
-        var simpleDateFormate =  SimpleDateFormat("yyyy-MM-dd")
-        var sd=simpleDateFormate.format(System.currentTimeMillis())
-        //Log.e("today",)
-        val myCal= Calendar.getInstance()
-        myCal.add(Calendar.DAY_OF_YEAR,-5)
-        var ed=simpleDateFormate.format(myCal.time)
+
+    // function to initialise the call of apod ( apod for today and last 5 days).
+    private fun getApodListini() {
+        var simpleDateFormate = SimpleDateFormat("yyyy-MM-dd")
+        var sd = simpleDateFormate.format(System.currentTimeMillis())
+        val myCal = Calendar.getInstance()
+        myCal.add(Calendar.DAY_OF_YEAR, -5)
+        var ed = simpleDateFormate.format(myCal.time)
         getApodList(ed, sd)
     }
 

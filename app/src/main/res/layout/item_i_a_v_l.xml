@@ -6,7 +6,7 @@
     android:orientation="horizontal">
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/image_view_iavl"
-        android:src="@drawable/ashish"
+
         android:layout_width="100dp"
         android:layout_height="100dp"
         />
@@ -22,7 +22,7 @@
             android:id="@+id/title_iavl"
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:text="this is vihava adn th coll"
+            android:text=""
             android:textSize="20dp"
             >
 

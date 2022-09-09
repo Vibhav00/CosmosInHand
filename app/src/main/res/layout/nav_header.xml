@@ -15,7 +15,7 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/image_view_nav"
-        android:src="@drawable/ashish"
+
         android:layout_width="75dp"
         android:layout_height="75dp"
         />

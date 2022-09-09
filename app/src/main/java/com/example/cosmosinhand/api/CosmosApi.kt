@@ -10,6 +10,9 @@ import retrofit2.http.Url
 
 interface CosmosApi {
 
+
+    /* getting the list of APODs to show in recyclerview*/
+
     @GET("https://api.nasa.gov/planetary/apod")
     suspend fun getApod(
         @Query("start_date")
@@ -22,13 +25,14 @@ interface CosmosApi {
     ): Response<List<ApodItem>>
 
 
+    // getting the searched image from nasa as IAVL
     @GET("https://images-api.nasa.gov/search")
-
     suspend fun getIavl(
         @Query("q")
         searchname: String = "sun"
     ): Response<Iavl>
 
+    //getting the list of images from given IAVL object
     @GET()
     suspend fun getImages(
         @Url()

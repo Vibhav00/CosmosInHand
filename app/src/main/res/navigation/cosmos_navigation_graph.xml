@@ -11,10 +11,19 @@
         tools:layout="@layout/fragment_apod" >
         <action
             android:id="@+id/action_apod_fragment_to_descFragment"
-            app:destination="@id/descFragment" />
+            app:destination="@id/descFragment"
+
+            app:enterAnim="@anim/zoom_out"
+            app:exitAnim="@anim/zoom_in"
+            app:popEnterAnim="@anim/zoom_out"
+            app:popExitAnim="@anim/zoom_in"/>
         <action
             android:id="@+id/action_apod_fragment_to_savedFragment"
-            app:destination="@id/savedFragment" />
+            app:destination="@id/savedFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/iavl_fragmet"
@@ -23,10 +32,18 @@
         tools:layout="@layout/fragment_i_a_v_l" >
         <action
             android:id="@+id/action_iavl_fragmet_to_descFragment"
-            app:destination="@id/descFragment" />
+            app:destination="@id/descFragment"
+            app:enterAnim="@anim/zoom_out"
+            app:exitAnim="@anim/zoom_in"
+            app:popEnterAnim="@anim/zoom_out"
+            app:popExitAnim="@anim/zoom_in"/>
         <action
             android:id="@+id/action_iavl_fragmet_to_savedFragment"
-            app:destination="@id/savedFragment" />
+            app:destination="@id/savedFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <fragment
         android:id="@+id/savedFragment"
@@ -35,7 +52,11 @@
         tools:layout="@layout/fragment_saved" >
         <action
             android:id="@+id/action_savedFragment_to_descFragment"
-            app:destination="@id/descFragment" />
+            app:destination="@id/descFragment"
+            app:enterAnim="@anim/zoom_out"
+            app:exitAnim="@anim/zoom_in"
+            app:popEnterAnim="@anim/zoom_out"
+            app:popExitAnim="@anim/zoom_in" />
     </fragment>
     <fragment
         android:id="@+id/descFragment"

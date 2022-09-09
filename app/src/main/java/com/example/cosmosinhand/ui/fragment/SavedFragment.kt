@@ -29,20 +29,18 @@ class SavedFragment : Fragment(R.layout.fragment_saved) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        //initialising view model
         viewModel = (activity as CosmosActivity).viewmodel
 
+        // setting up recycler veiw
         setUpRecyclerView()
 
-        Log.e("aman1", "kjkjk")
-        GlobalScope.launch {
-            Log.e("aman", viewModel.getAllSavedItems().toString())
-
-        }
-        Log.e("aman2", "kdjf")
+        // observing the dataitems from the database and updating it to the differDataBaseItem
         viewModel.getAllSavedItems().observe(viewLifecycleOwner, Observer {
             databaseAdapter.differDateBaseItem.submitList(it)
         })
 
+        // onclick listner to the database items and navigating to the description fragment
         databaseAdapter.setonItemClickListner {
             var bundle = Bundle().apply {
                 putSerializable("url", it.ure)
@@ -52,6 +50,7 @@ class SavedFragment : Fragment(R.layout.fragment_saved) {
         }
 
 
+        // implementing the functionality to swip items of the database to delete
         val itemTouchHelperCallBack = object : ItemTouchHelper.SimpleCallback(
             ItemTouchHelper.UP or ItemTouchHelper.DOWN,
             ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
@@ -69,6 +68,7 @@ class SavedFragment : Fragment(R.layout.fragment_saved) {
                 val databaseItem = databaseAdapter.differDateBaseItem.currentList[position]
                 viewModel.deleteSavedItem(databaseItem)
 
+                // making snackbar to undo changes
                 Snackbar.make(view, "deleted ", Snackbar.LENGTH_LONG).apply {
                     setAction("undo")
                     {
@@ -87,6 +87,7 @@ class SavedFragment : Fragment(R.layout.fragment_saved) {
 
     }
 
+    // function to set up recyclerview
     private fun setUpRecyclerView() {
         databaseAdapter = DatabaseAdapter()
         rv_saved_fra.apply {

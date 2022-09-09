@@ -37,7 +37,7 @@
                 <androidx.appcompat.widget.AppCompatButton
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-android:id="@+id/btn_toolbar"
+                    android:id="@+id/btn_toolbar"
                     android:background="@drawable/ic_baseline_edit_calendar_24"
 
 
@@ -87,7 +87,7 @@ android:id="@+id/btn_toolbar"
         android:layout_gravity="start"
         app:headerLayout="@layout/nav_header"
         app:menu="@menu/bottom_navigation_menu"
-        android:background="@drawable/second"/>
+        android:background="@drawable/drawer_layout"/>
 
 
 </androidx.drawerlayout.widget.DrawerLayout>

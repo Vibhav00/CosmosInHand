@@ -8,6 +8,9 @@ import com.example.cosmosinhand.models.database.DatabaseItem
 import com.example.cosmosinhand.models.iavl.Iavl
 import retrofit2.Response
 
+/**
+ * (Repository)
+ */
 class CosmosRepository(var db: DatabaseMain) {
 
     suspend fun getApod(startdate: String, endDate: String)= RetrofitInstance.api.getApod(startdate, endDate)

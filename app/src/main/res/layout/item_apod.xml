@@ -29,7 +29,7 @@
         android:id="@+id/iv_apod"
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        tools:src="@drawable/ashish" />
+      />
 
     <TextView
         android:textColor="@color/white"

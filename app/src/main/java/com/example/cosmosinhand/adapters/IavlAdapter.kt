@@ -13,6 +13,10 @@ import com.example.cosmosinhand.models.apod.ApodItem
 import com.example.cosmosinhand.models.iavl.Item
 import kotlinx.android.synthetic.main.item_i_a_v_l.view.*
 
+/**
+ * it is to handle IAVL(image and video library ) items.
+ *
+ */
 class IavlAdapter : RecyclerView.Adapter<IavlAdapter.IavlViewHolder>() {
     class IavlViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 

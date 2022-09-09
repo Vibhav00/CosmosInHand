@@ -25,47 +25,47 @@ class CosmosActivity : AppCompatActivity() {
 
     lateinit var toggle: ActionBarDrawerToggle
     lateinit var viewmodel: CosmosViewModel
-    var simpleDateFormate = SimpleDateFormat("yyyy-MM-dd")
-    //var toolbar:Button?=null;
 
+    // simple date format
+    var simpleDateFormate = SimpleDateFormat("yyyy-MM-dd")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // instance of repository
         val repository = CosmosRepository(DatabaseMain(this))
-        val viewModelProviderFactory = CosmosViewModelProviderFactory(application,repository)
+        // instance of viewModel
+        val viewModelProviderFactory = CosmosViewModelProviderFactory(application, repository)
         viewmodel =
             ViewModelProvider(this, viewModelProviderFactory).get(CosmosViewModel::class.java)
+        // setting up ContentView
         setContentView(R.layout.activity_cosmos)
-         // toolbar=findViewById(R.id.btn_toolbar)
 
-
-        val toolbar=findViewById<View>(R.id.toolbar)  as androidx.appcompat.widget.Toolbar
+        // setting up toolbar
+        val toolbar = findViewById<View>(R.id.toolbar) as androidx.appcompat.widget.Toolbar
         setSupportActionBar(toolbar)
-//        if(supportActionBar!=null)
-//        {
-//            supportActionBar?.
-//
-//
-//        }
 
-        //bottom navigation view
+        // bottom navigation view for navigation control
         bottomnavigationview.setupWithNavController(fv.findNavController())
-        //drawer layout
-       // Log.e("vibhav", "yaha tk main")
+
+        //initialising drawer layout
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
+
+        // setting up toggle button
         toggle = ActionBarDrawerToggle(this, drawerLayout, R.string.nav_open, R.string.nav_close)
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        btn_toolbar.setOnClickListener{
+        // btn to select date of a random date
+        btn_toolbar.setOnClickListener {
             datepick()
         }
 
 
     }
 
-    //drawer layout
+    //on item selected
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return if (toggle.onOptionsItemSelected(item))
             true
@@ -74,12 +74,12 @@ class CosmosActivity : AppCompatActivity() {
 
     }
 
+    // Function to Call getApodList function of viewModel
     private fun callApod(sd: Date, ed: Date) {
-
-
-      viewmodel.getApodList(simpleDateFormate.format(ed),simpleDateFormate.format(sd))
+        viewmodel.getApodList(simpleDateFormate.format(ed), simpleDateFormate.format(sd))
     }
 
+    // function to pick up date
     private fun datepick() {
         val myCal = Calendar.getInstance()
         val year = myCal.get(Calendar.YEAR)
@@ -89,13 +89,11 @@ class CosmosActivity : AppCompatActivity() {
             this,
             DatePickerDialog.OnDateSetListener { view, selectedyear, seletedmonth, selecteddayofmonth ->
                 val selecteddate = "$selectedyear-$seletedmonth-$selecteddayofmonth"
+                // sd-> starting date
                 var sd = simpleDateFormate.parse(selecteddate)
-                var ed:Date = Date(sd.time-432000000L)
-                Log.e("check1",simpleDateFormate.format(sd))
-                Log.e("check2",simpleDateFormate.format(ed))
-
-
-                callApod(sd,ed)
+                // ed->date just before 5 days of starting date
+                var ed: Date = Date(sd.time - 432000000L)
+                callApod(sd, ed)
             }, year, month, day
         )
         dpd.show()

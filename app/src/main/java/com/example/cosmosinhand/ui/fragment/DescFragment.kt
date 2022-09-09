@@ -22,46 +22,49 @@ import java.util.*
 
 class DescFragment : Fragment(R.layout.fragment_desc), TextToSpeech.OnInitListener {
     val args: DescFragmentArgs by navArgs()
-
     var tts: TextToSpeech? = null
     lateinit var viewModel: CosmosViewModel
     lateinit var item: DatabaseItem
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        // initialising the viewModel
         viewModel = (activity as CosmosActivity).viewmodel
+
+        //initialising text to speech
         tts = TextToSpeech(this.context, this)
+
+        // collectin all the arguments comming from the previous fragment
         val descriptionDesc = args.description
         val valueofimg = args.url
         val imgnext = args.urlpre
-        Log.e("vibav-desc", descriptionDesc)
-        Log.e("vibav-valofimg", valueofimg)
-        Log.e("imgenext", imgnext)
-        Log.e("check", valueofimg)
+
+        // initialising the data item
         item = DatabaseItem(0, valueofimg, descriptionDesc)
+
+        // implementing the function of the button to save the item to the database
         btn_desc.setOnClickListener {
-            //  item?.let { it1 ->
             viewModel.saveIntoDatabase(item)
-            Log.e("aman", item.toString())
         }
+
+        // implementing the function of the text to speech on textview is clicked
         tv_desc.setOnClickListener {
             speakOut(tv_desc.text.toString())
         }
 
 
+        //checking the default value of (valueofimg)
+        // if it is not that value
+        // that means control jumps from Apod fragment
+        // else control jumps from iavl fragment and
+        // accodingly setting the image in the image view
         if (valueofimg != "abc")
             Glide.with(this).load(valueofimg).into(iv_desc)
         else {
             viewModel.getImageList(imgnext)
             viewModel.imagelist.observe(viewLifecycleOwner, Observer {
-
-
                 when (it) {
-
-
                     is Resource.Success -> {
 
-                        Log.e("vibahvimage", it.data.toString())
-                        // val s=it.data?.get(0)
                         var i = 0;
                         for (name in it.data!!) {
                             if (name.contains(".jpg") || name.contains(".png")) {
@@ -81,10 +84,10 @@ class DescFragment : Fragment(R.layout.fragment_desc), TextToSpeech.OnInitListen
                     }
 
                     is Resource.Error -> {
-                        Log.e("vkvkv", "error")
+                        Log.e("Error", "error occurred in desc fragment in parsing the result")
                     }
                     is Resource.Loding -> {
-
+                        Log.e("Error", "imgage is still Loading ")
                     }
 
                 }
@@ -94,10 +97,10 @@ class DescFragment : Fragment(R.layout.fragment_desc), TextToSpeech.OnInitListen
 
 
         }
-        //
         tv_desc.text = descriptionDesc
     }
 
+    // initialising text to speech
     override fun onInit(status: Int) {
         if (status == TextToSpeech.SUCCESS) {
             val result = tts!!.setLanguage(Locale("en", "IN"))
@@ -106,14 +109,16 @@ class DescFragment : Fragment(R.layout.fragment_desc), TextToSpeech.OnInitListen
             }
 
         } else {
-            Log.e("vk", "inititalization failed ")
+            Log.e("Error", "inititalization failed ")
         }
     }
 
+    // setting up text to speech
     private fun speakOut(text: String) {
         tts?.speak(text, TextToSpeech.QUEUE_FLUSH, null, "")
     }
 
+    // stopping the text to speech when fragment is destroyed
     override fun onDestroy() {
         super.onDestroy()
         tts?.stop()
