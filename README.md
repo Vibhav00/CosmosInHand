@@ -1,6 +1,5 @@
 
-![Logo](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/th5xamgrr6se0x5ro4g6.png)
-
+![Logo](screenshots/icon.jpg)
 
 # Cosmos In Hand
 
@@ -36,8 +35,9 @@ easily.
 
 
 
+
 ## Screenshots
-
-![App Screenshot](https://via.placeholder.com/700x1120?text=App+Screenshot+Here)
-![App Screenshot](https://via.placeholder.com/700x1120?text=App+Screenshot+Here)
-
+![App Screenshot](screenshots/apod.jpg)
+![App Screenshot](screenshots/search1.jpg)
+![App Screenshot](screenshots/desc.jpg)
+![App Screenshot](screenshots/saved.jpg)
