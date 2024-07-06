@@ -12,11 +12,11 @@
 
 </div>
 
-# About the App 🔍📖ℹ️
+## About the App 🔍📖ℹ️
 
 🚀 This app is built on NASA's Open API 🛸. Use it to explore the Astronomy Picture of the Day (APOD) and search for any astronomical object 🌏. Results come directly from NASA's Image and Video Library (IAVL). If you find information you love ❤, you can save it to your device and revisit anytime. Downloaded images are of very high quality 📸, and for those moments when you prefer listening, our text-to-speech feature makes it easy to hear all the details 🔊.
 
-# Key Features 🚀💡🛠️
+## Key Features 🚀💡🛠️
 
 - Get Astronomy Picture of the Day 📅🖼️
 - Search from NASA's Image and Video Library 🔍🪐
