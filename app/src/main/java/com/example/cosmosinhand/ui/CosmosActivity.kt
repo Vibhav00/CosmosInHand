@@ -58,9 +58,9 @@ class CosmosActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         // btn to select date of a random date
-        btn_toolbar.setOnClickListener {
-            datepick()
-        }
+//        btn_toolbar.setOnClickListener {
+//            datepick()
+//        }
 
 
     }

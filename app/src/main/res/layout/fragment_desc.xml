@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:background="@drawable/fifth"
+    android:background="@color/main_backgrond_color"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -22,7 +22,7 @@
 
 
          <ImageView
-             android:background="@color/white"
+             android:background="@color/main_color"
              android:padding="3dp"
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
@@ -30,11 +30,28 @@
              app:layout_constraintTop_toTopOf="parent"
              />
          <TextView
-             android:layout_margin="20dp"
+             android:layout_marginLeft="20dp"
+             android:layout_marginRight="20dp"
+             android:layout_marginTop="20dp"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:id="@+id/tv_title_desc"
+             android:text="lskdjf ksjldkf kjsldkfj"
+             android:fontFamily="@font/roboto_bold"
+             android:textColor="#FFFFFF"
+             android:textSize="20sp"
+             app:layout_constraintTop_toBottomOf="@+id/iv_desc"
+             />
+         <TextView
+              android:layout_marginLeft="20dp"
+             android:layout_marginRight="20dp"
+             android:layout_marginTop="10dp"
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
              android:id="@+id/tv_desc"
+             android:fontFamily="@font/roboto_regular"
              android:textColor="#FFFFFF"
+             android:text="llsjd  lsjkd  sjlkdfj jsl dfj skdj"
              app:layout_constraintTop_toBottomOf="@+id/iv_desc"
              />
          <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -42,10 +59,19 @@
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
              android:layout_gravity="end"
+             android:backgroundTint="@color/btn_color"
              android:layout_marginEnd="30dp"
              android:src="@drawable/ic_baseline_favorite_24"
              android:layout_marginBottom="30dp"
              />
+         <Button
+             android:layout_gravity="center"
+             android:backgroundTint="@color/btn_color"
+             android:textColor="@color/black"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="Download"
+             android:id="@+id/download_pic"/>
 
      </LinearLayout>
 

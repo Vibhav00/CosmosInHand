@@ -1,49 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-
     android:layout_width="match_parent"
     android:layout_height="500dp"
-
-
     android:orientation="vertical"
-    android:padding="10dp">
+    android:background="#00FFFFFF"
+    android:padding="30dp">
 
-    <TextView
-        android:id="@+id/date_apod"
-        android:textStyle="bold"
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:textSize="20dp"
-        tools:text="2022-56-34" />
-    <View
-        android:layout_width="120dp"
-        android:layout_height="2dp"
-        android:background="@color/white"
-        />
+        android:layout_height="match_parent"
+        android:backgroundTint="@color/main_color"
+         app:cardCornerRadius="15dp"
+        android:outlineAmbientShadowColor="@color/black"
+        android:outlineSpotShadowColor="@color/black"
+        android:background="@color/black">
 
-    <ImageView
-        android:padding="10dp"
-        android:layout_marginTop="20dp"
-        android:id="@+id/iv_apod"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-      />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="20dp">
 
-    <TextView
-        android:textColor="@color/white"
-        android:id="@+id/desc_apod"
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
-        tools:text="dkfjsljdfljlsdfssdjkfl" />
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="@color/white"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        />
+            <ImageView
+                android:id="@+id/iv_apod"
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/date_apod" />
+
+            <TextView
+                android:id="@+id/date_apod"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_color"
+                android:textSize="15sp"
+                android:fontFamily="@font/roboto_bold"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="2022-56-34" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="20dp"
+            android:background="@drawable/text_backgroud"
+            android:orientation="vertical">
+
+
+            <TextView
+              android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:id="@+id/title_apod"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="250dp"
+                android:gravity="center"
+                android:textColor="@color/text_color"
+                android:fontFamily="@font/roboto_medium"
+                android:textSize="18dp"
+                tools:text="dkfjsljdfljlsdfssdjkfl" />
+
+            <TextView
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:id="@+id/desc_apod"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:fontFamily="@font/roboto_regular"
+                android:textColor="@color/text_color"
+                tools:text="dkfjsljdfljlsdfssdjkfl" />
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
 
 </LinearLayout>

@@ -45,10 +45,10 @@ class DatabaseAdapter : RecyclerView.Adapter<DatabaseAdapter.DataItemViewHolder>
         holder.itemView.apply {
             Glide.with(this).load(dataItem.ure).into(image_view_iavl)
             desc_iavl.text = dataItem.des
-            title_iavl.visibility=View.INVISIBLE
+            title_iavl.text="This is new Item "
+//            title_iavl.visibility=View.INVISIBLE
             setOnClickListener {
                 onItemDataClickListner?.let {
-
                     it(dataItem)
 
                 }

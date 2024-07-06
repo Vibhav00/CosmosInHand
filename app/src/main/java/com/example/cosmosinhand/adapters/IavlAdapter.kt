@@ -44,8 +44,8 @@ class IavlAdapter : RecyclerView.Adapter<IavlAdapter.IavlViewHolder>() {
         val iavl = diffiiavl.currentList[position]
         holder.itemView.apply {
             Glide.with(this).load(iavl.links[0].href).into(image_view_iavl)
-            title_iavl.text = iavl.data[0].title
-            desc_iavl.text = iavl.data[0].description_508
+            title_iavl.text = iavl.data[0].title.take(15)+"..."
+            desc_iavl.text = iavl.data[0].description_508.take(70)+"..."
 
             setOnClickListener {
                 onItemClickListnerIavl?.let {

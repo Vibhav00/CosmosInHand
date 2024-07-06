@@ -60,6 +60,8 @@ class ApodFragment : Fragment(R.layout.fragment_apod) {
             val bundle = Bundle().apply {
                 putSerializable("url", it.hdurl)
                 putSerializable("description", it.explanation)
+                putSerializable("title",it.title)
+                putSerializable("copy",it.copyright)
             }
             findNavController().navigate(R.id.action_apod_fragment_to_descFragment, bundle)
         }

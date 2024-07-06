@@ -74,5 +74,13 @@
             android:name="urlpre"
             app:argType="string"
             android:defaultValue="cde" />
+        <argument
+            android:name="title"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="copy"
+            app:argType="string"
+            app:nullable="true" />
     </fragment>
 </navigation>

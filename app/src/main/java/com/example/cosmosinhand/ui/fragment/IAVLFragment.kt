@@ -70,6 +70,8 @@ class IAVLFragment : Fragment(R.layout.fragment_i_a_v_l) {
             val bundle = Bundle().apply {
                 putSerializable("urlpre", it.href)
                 putSerializable("description", it.data[0].description_508)
+                putSerializable("title",null)
+                putSerializable("copy",null)
             }
             findNavController().navigate(R.id.action_iavl_fragmet_to_descFragment, bundle)
         }
