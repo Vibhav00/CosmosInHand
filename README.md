@@ -8,7 +8,7 @@
 ## An app designed to explore NASA's groundbreaking research 🚀✨🪐🔍.
 
 <div align="center">
-<img src = "./screenshots/icon.jpg" width="20%" />
+<img src = "./screenshots/icon.jpg" width="80%" />
 
 </div>
 
